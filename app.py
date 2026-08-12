@@ -48,13 +48,23 @@ with col2:
     warranty = st.selectbox('Warranty (in Years)', sorted(df['warranty'].unique()))
 
 # Resolution Inputs
-st.subheader("Screen Resolution")
-res_col1, res_col2 = st.columns(2)
-with res_col1:
-    res_width = st.number_input('Resolution Width (px)', value=1920, step=100)
-with res_col2:
-    res_height = st.number_input('Resolution Height (px)', value=1080, step=100)
+resolution_option = st.selectbox(
+    'Screen Resolution',
+    [
+        '1920x1080 (Full HD)',
+        '1366x768 (HD)',
+        '2560x1440 (2K / QHD)',
+        '3840x2160 (4K Ultra HD)',
+        '1440x900',
+        '1600x900',
+        '2880x1800 (Retina Display)'
+    ]
+)
 
+# Resolution එකෙන් Width සහ Height වෙන් කරගැනීම
+res_parts = resolution_option.split(' ')[0].split('x')
+res_width = int(res_parts[0])
+res_height = int(res_parts[1])
 # Spec Rating (Average Value Default)
 spec_rating = st.slider('Spec Rating', min_value=30, max_value=100, value=70)
 

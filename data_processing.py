@@ -18,7 +18,20 @@ def load_and_clean_data(file_path="laptop_data.csv"):
     df['Ram'] = df['Ram'].astype(str).str.extract(r'(\d+)').astype('int32')
 
     # 3. Storage (ROM) Capacity Clean කිරීම
-    df['ROM'] = df['ROM'].astype(str).str.extract(r'(\d+)').astype('int32')
+    def clean_rom(value):
+        value = str(value).upper()
+        if 'TB' in value:
+            nums = ''.join(filter(str.isdigit, value))
+            return int(nums) * 1024 if nums else 0  # TB ටික GB බවට හැරවීම
+        elif 'GB' in value:
+            nums = ''.join(filter(str.isdigit, value))
+            return int(nums) if nums else 0
+        else:
+            # අංකයක් විතරක් තිබුණොත් extract කිරීම
+            nums = ''.join(filter(str.isdigit, value))
+            return int(nums) if nums else 0
+
+    df['ROM'] = df['ROM'].apply(clean_rom)
 
     # 4. Processor / CPU Brand වෙන් කරගැනීම
     def fetch_processor(text):
