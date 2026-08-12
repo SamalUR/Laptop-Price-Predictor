@@ -2,6 +2,9 @@
 
 An End-to-End Machine Learning Web Application that predicts laptop prices based on hardware specifications using Machine Learning.
 
+<img width="818" height="877" alt="image" src="https://github.com/user-attachments/assets/6c7fe543-e27c-4169-8525-9fa4b4bb882b" />
+
+
 ## 🚀 Features
 * Predicts Laptop Prices in **INR (₹)** and converts to **LKR**.
 * Handles various specifications including **RAM, ROM (Storage in GB/TB), CPU, GPU, OS, and Screen Resolution**.
@@ -25,3 +28,4 @@ Laptop-Price-Predictor/
 ├── df.pkl                  # Processed DataFrame
 ├── requirements.txt        # Python Dependencies
 └── README.md               # Project documentations
+
